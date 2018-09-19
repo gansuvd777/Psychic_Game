@@ -6,7 +6,6 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var letterUser = [];
-var eachofLetters = null;
 
 // Sets the computerGuess variable equal to a random choice from the computerChoice array.
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -18,8 +17,7 @@ function countGuessesLeft() {
 function farUserGuesses() {
 	document.querySelector("#letter").innerHTML = "Your Guesses so far: " + letterUser.join(' ');
 }
-
-countGuessesLeft();
+// countGuessesLeft();
 
 var restart = function() {
 	guessesLeft = 9;
@@ -28,11 +26,14 @@ var restart = function() {
 
 // When the user presses a key
 document.onkeyup = function(event) {
-	guessesLeft--;
+	var userGuess = event.key;
 
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	letterUser.push(userGuess);
+	if (computerChoices.includes(userGuess)) {
+		letterUser.push(userGuess);
+		document.getElementById("letter").innerText = letterUser;
+	} else {
+		alert("You have to guess 'letter'!");
+	}
 	countGuessesLeft();
 	farUserGuesses();
 
@@ -46,6 +47,9 @@ document.onkeyup = function(event) {
 		document.querySelector("#lose").innerHTML = "Loses: " + losses;
 		restart();
 	}
+	else {
+		guessesLeft--;
+	}
   };
 // testing out Jquery, this is amazing
 $(document).ready(function(){
@@ -57,4 +61,8 @@ $(document).ready(function(){
 	});
 
 	$("#imgBrand2").hide(1000).show(1000).hide(1000).show(1000);
+
+	$("#button").on("click", function(){
+		$("#button").html("want to play again?"); 
+	});
 });
