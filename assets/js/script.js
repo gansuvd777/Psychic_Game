@@ -47,9 +47,14 @@ document.onkeyup = function(event) {
 		restart();
 	}
   };
-$("#imgBrand1")
-	.mouseover(function(){
-	this.src = "assets/images/pressKey.jpg"
-}).mouseout(function(){
-	this.src = "assets/images/Abcd.jpg"
+// testing out Jquery, this is amazing
+$(document).ready(function(){
+	$("#imgBrand1")
+		.mouseover(function(){
+		this.src = "assets/images/pressKey.jpg"
+	}).mouseout(function(){
+		this.src = "assets/images/Abcd.jpg"
+	});
+
+	$("#imgBrand2").hide(1000).show(1000).hide(1000).show(1000);
 });
