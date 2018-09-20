@@ -33,6 +33,7 @@ document.onkeyup = function(event) {
 		document.getElementById("letter").innerText = letterUser;
 	} else {
 		alert("You have to guess 'letter'!");
+		return
 	}
 	countGuessesLeft();
 	farUserGuesses();
